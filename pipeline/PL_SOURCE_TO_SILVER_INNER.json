@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select table_id from ctrl.table_config where table_id=@{table_id}",
+						"sqlReaderQuery": {
+							"value": "select table_id from ctrl.table_config where table_id=@{pipeline().parameters.table_id}",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},

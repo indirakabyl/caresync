@@ -30,6 +30,25 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Ingest All Tables",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Read Source Table Lists",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Read Source Table Lists').output.value",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {

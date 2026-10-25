@@ -188,10 +188,6 @@
 							"value": "@activity('Read Table Details').output.firstRow.source_system",
 							"type": "Expression"
 						},
-						"source_system": {
-							"value": "@activity('Read Table Details').output.firstRow.bronze_table_name",
-							"type": "Expression"
-						},
 						"table_Name": {
 							"value": "@variables('start_time')",
 							"type": "Expression"

@@ -143,15 +143,15 @@
 				"typeProperties": {
 					"notebookPath": "/caresync-repo/caresync-databricks-repo/Landing_to_Bronze",
 					"baseParameters": {
-						"landing_timestamp": {
+						"source_system": {
 							"value": "@activity('Read Table Details').output.firstRow.source_system",
 							"type": "Expression"
 						},
-						"source_system": {
+						"table_name": {
 							"value": "@activity('Read Table Details').output.firstRow.bronze_table_name",
 							"type": "Expression"
 						},
-						"table_Name": {
+						"landing_timestamp": {
 							"value": "@variables('start_time')",
 							"type": "Expression"
 						}

@@ -134,7 +134,10 @@
 								"scripts": [
 									{
 										"type": "Query",
-										"text": "@insert into ctrl.audit_log (adf_run_id, table_id, stage, status,start_time) \nvalues ('a1',@{item().table_id},'SOURCE_TO_SILVER','IN_PROGRESS',SYSUTCDATETIME())"
+										"text": {
+											"value": "insert into ctrl.audit_log (adf_run_id, table_id, stage, status,start_time) \nvalues ('a1',@{item().table_id},'SOURCE_TO_SILVER','IN_PROGRESS',SYSUTCDATETIME())",
+											"type": "Expression"
+										}
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"

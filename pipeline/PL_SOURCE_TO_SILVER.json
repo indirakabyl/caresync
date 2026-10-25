@@ -114,7 +114,7 @@
 								{
 									"activity": "Ingest from Source to Silver",
 									"dependencyConditions": [
-										"Succeeded"
+										"Failed"
 									]
 								}
 							],

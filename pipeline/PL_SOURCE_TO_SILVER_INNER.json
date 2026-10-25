@@ -184,11 +184,11 @@
 				"typeProperties": {
 					"notebookPath": "/caresync-repo/caresync-databricks-repo/Bronze_to_Silver",
 					"baseParameters": {
-						"landing_timestamp": {
-							"value": "@activity('Read Table Details').output.firstRow.source_system",
+						"table_name": {
+							"value": "@activity('Read Table Details').output.firstRow.silver_table_name",
 							"type": "Expression"
 						},
-						"table_Name": {
+						"landing_timestamp": {
 							"value": "@variables('start_time')",
 							"type": "Expression"
 						}

@@ -413,6 +413,12 @@
 												"type": "BinaryReadSettings"
 											}
 										},
+										"sink": {
+											"type": "BinarySink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											}
+										},
 										"enableStaging": false
 									},
 									"inputs": [
@@ -423,7 +429,17 @@
 												"folder": {
 													"value": "@activity('Read Table Details').output.firstRow.source_path",
 													"type": "Expression"
-												}
+												},
+												"container": "source"
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_CSV_Binary",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": "landing"
 											}
 										}
 									]

@@ -1,0 +1,61 @@
+{
+	"name": "PL_MASTER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Source to Silver",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_SOURCE_TO_SILVER",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"source_system": "neon_postgres",
+						"adf_run_id": {
+							"value": "@pipeline().RunId",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Source to Silver ADLS",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Source to Silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_SOURCE_TO_SILVER",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"source_system": "adls_csv",
+						"adf_run_id": {
+							"value": "@pipeline().RunId",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"annotations": []
+	}
+}
